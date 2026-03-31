@@ -146,7 +146,7 @@ const GameListScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.logoText}>GameVault</Text>
-      <Text style={styles.title}>Explora nuestro catalogo</Text>
+      <Text style={styles.title}>Explora nuestro catálogo</Text>
 
       <FlatList
         data={games}
