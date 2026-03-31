@@ -1,51 +1,57 @@
 import { StyleSheet } from 'react-native';
+import { colors } from './GlobalStyles';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+    flexGrow: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    backgroundColor: colors.bg1,
   },
-
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '700',
+    color: colors.text1,
     marginBottom: 20,
-    textAlign: 'center',
   },
-
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 12,
+    borderColor: colors.border,
+    borderRadius: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    fontSize: 14,
+    color: '#FFF',
+    backgroundColor: colors.bg3,
+    marginBottom: 16,
   },
-
   button: {
-    backgroundColor: '#6C63FF',
-    padding: 12,
-    borderRadius: 8,
+    backgroundColor: colors.purpleLight,
+    paddingVertical: 12,
+    borderRadius: 12,
     alignItems: 'center',
-    marginTop: 10,
+    marginBottom: 10,
   },
-
-  disabledButton: {
-    backgroundColor: '#aaa',
-  },
-
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: '#FFF',
+    fontWeight: '600',
+    fontSize: 14,
   },
-
+  disabledButton: {
+    opacity: 0.5,
+  },
   clearButton: {
-    marginTop: 10,
+    paddingVertical: 12,
+    borderRadius: 12,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.bg2,
+    marginBottom: 20,
   },
-
   clearText: {
-    color: '#FF4D4D',
-    fontWeight: 'bold',
+    color: colors.text1,
+    fontWeight: '500',
+    fontSize: 14,
   },
 });

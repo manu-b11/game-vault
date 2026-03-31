@@ -6,12 +6,24 @@ import {
   FlatList,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import styles from '../styles/GameListStyles';
+import { colors } from '../styles/GlobalStyles';
 
 const GameListScreen = ({ navigation }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const genreEmojis = {
+    Acción: '🎮',
+    Simulación: '🛠️',
+    Terror: '😱',
+    Aventura: '🗺️',
+    RPG: '🛡️',
+    Deportes: '⚽',
+    Estrategia: '♟️',
+  };
 
   // Load games when component mounts
   useEffect(() => {
@@ -26,6 +38,8 @@ const GameListScreen = ({ navigation }) => {
           ageRating: 'M',
           description:
             'Historia de supervivencia en un mundo postapocalíptico junto a Ellie',
+          image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1888930/header.jpg',
         },
         {
           id: '2',
@@ -36,6 +50,8 @@ const GameListScreen = ({ navigation }) => {
           ageRating: 'T',
           description:
             'Simulador de vida donde puedes crear y controlar personajes',
+          image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1222670/header.jpg',
         },
         {
           id: '3',
@@ -46,6 +62,8 @@ const GameListScreen = ({ navigation }) => {
           ageRating: 'M',
           description:
             'Terror psicológico en una ciudad cubierta de niebla llena de misterios',
+          image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/2124490/header.jpg',
         },
         {
           id: '4',
@@ -56,6 +74,8 @@ const GameListScreen = ({ navigation }) => {
           ageRating: 'M',
           description:
             'Historia emocional basada en decisiones con viajes en el tiempo',
+          image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/319630/header.jpg',
         },
         {
           id: '5',
@@ -66,6 +86,8 @@ const GameListScreen = ({ navigation }) => {
           ageRating: 'T',
           description:
             'Metroidvania desafiante en un mundo oscuro y misterioso',
+          image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/367520/header.jpg',
         },
       ];
 
@@ -78,19 +100,44 @@ const GameListScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
+      activeOpacity={0.75}
       onPress={() => navigation.navigate('GameDetail', { game: item })}
     >
-      <Text style={styles.title}>{item.title}</Text>
-      <Text>🎮 Plataforma: {item.platform}</Text>
-      <Text>🕹️ Género: {item.genre}</Text>
+      <Image
+        source={{ uri: item.image }}
+        style={styles.cardImage}
+        resizeMode="cover"
+      />
+      <View style={styles.cardBody}>
+        <View style={styles.cardTop}>
+          <Text style={styles.title} numberOfLines={1}>
+            {item.title}
+          </Text>
+          <Text style={styles.description} numberOfLines={2}>
+            {item.description}
+          </Text>
+        </View>
+        <View style={styles.cardBottom}>
+          <View style={styles.badgeRow}>
+            <View style={styles.badgePurple}>
+              <Text style={styles.badgeTextPurple}>{item.platform}</Text>
+            </View>
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>
+                {genreEmojis[item.genre]} {item.genre}
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.price}>${item.price}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 
-  // Show loading indicator
   if (loading) {
     return (
       <SafeAreaView style={styles.loadingContainer}>
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color={colors.purple} />
         <Text style={styles.loadingText}>Cargando juegos...</Text>
       </SafeAreaView>
     );
@@ -98,13 +145,17 @@ const GameListScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <FlatList
-          data={games}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-        />
-      </View>
+      <Text style={styles.logoText}>GameVault</Text>
+      <Text style={styles.title}>Explora nuestro catalogo</Text>
+
+      <FlatList
+        data={games}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}
+        style={{ width: '100%' }}
+      />
     </SafeAreaView>
   );
 };

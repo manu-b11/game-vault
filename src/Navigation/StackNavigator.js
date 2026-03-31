@@ -12,13 +12,12 @@ const StackNavigator = () => {
       <Stack.Screen
         name="GameList"
         component={GameListScreen}
-        options={{ title: 'Catálogo' }}
+        options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="GameDetail"
         component={GameDetailScreen}
-        options={{ title: 'Detalle del Juego' }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

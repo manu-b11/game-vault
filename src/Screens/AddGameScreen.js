@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View,
   Text,
   TextInput,
   Alert,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import styles from '../styles/AddGameStyles';
 
 export default function AddGameScreen() {
-  // form states
+  // states for each input field
   const [title, setTitle] = useState('');
   const [platform, setPlatform] = useState('');
   const [genre, setGenre] = useState('');
   const [price, setPrice] = useState('');
   const [ageRating, setAgeRating] = useState('');
-
+  const [image, setImage] = useState('');
   const [isValid, setIsValid] = useState(false);
 
-  // validate form when inputs change
+  // validate the form in real-time
   useEffect(() => {
     const priceIsNumber = !isNaN(price) && price !== '';
-
     if (title && platform && genre && ageRating && priceIsNumber) {
       setIsValid(true);
     } else {
@@ -33,82 +31,99 @@ export default function AddGameScreen() {
     }
   }, [title, platform, genre, price, ageRating]);
 
-  // submit form
+  // show the alert when adding a game
   const handleAddGame = () => {
     Alert.alert(
-      'Juego agregado',
-      `Título: ${title}
-      Plataforma: ${platform}
-      Género: ${genre}
-      Precio: ${price}
-      Clasificación: ${ageRating}`,
+      'Game added',
+      `Title: ${title}
+      Platform: ${platform}
+      Genre: ${genre}
+      Price: ${price}
+      Rating: ${ageRating}
+      Image URL: ${image}`,
     );
   };
 
-  // reset form
+  // clear all input fields
   const handleClear = () => {
     setTitle('');
     setPlatform('');
     setGenre('');
     setPrice('');
     setAgeRating('');
+    setImage('');
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAvoidingView
-        style={styles.container}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <Text style={styles.title}>Agregar videojuego</Text>
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={styles.title}>Añadir videojuego</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Título del juego"
-          value={title}
-          onChangeText={setTitle}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Game title"
+            placeholderTextColor="#EEE"
+            value={title}
+            onChangeText={setTitle}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Plataforma (PS5, Xbox, PC...)"
-          value={platform}
-          onChangeText={setPlatform}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Platform (PS5, Xbox, PC...)"
+            placeholderTextColor="#EEE"
+            value={platform}
+            onChangeText={setPlatform}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Género"
-          value={genre}
-          onChangeText={setGenre}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Genre"
+            placeholderTextColor="#EEE"
+            value={genre}
+            onChangeText={setGenre}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Precio"
-          value={price}
-          onChangeText={setPrice}
-          keyboardType="numeric"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Price"
+            placeholderTextColor="#EEE"
+            value={price}
+            onChangeText={setPrice}
+            keyboardType="numeric"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Clasificación (E, T, M)"
-          value={ageRating}
-          onChangeText={setAgeRating}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Rating (E, T, M)"
+            placeholderTextColor="#EEE"
+            value={ageRating}
+            onChangeText={setAgeRating}
+          />
 
-        <TouchableOpacity
-          style={[styles.button, !isValid && styles.disabledButton]}
-          onPress={handleAddGame}
-          disabled={!isValid}
-        >
-          <Text style={styles.buttonText}>Agregar Juego</Text>
-        </TouchableOpacity>
+          <TextInput
+            style={styles.input}
+            placeholder="Image URL"
+            placeholderTextColor="#EEE"
+            value={image}
+            onChangeText={setImage}
+          />
 
-        <TouchableOpacity style={styles.clearButton} onPress={handleClear}>
-          <Text style={styles.clearText}>Limpiar</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, !isValid && styles.disabledButton]}
+            onPress={handleAddGame}
+            disabled={!isValid}
+          >
+            <Text style={styles.buttonText}>Añadir juego</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.clearButton} onPress={handleClear}>
+            <Text style={styles.clearText}>Limpiar</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
