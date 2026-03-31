@@ -1,97 +1,76 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GameVault
 
-# Getting Started
+## Estudiante
+Manuela Bolivar Sanchez
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Descripción del proyecto
+GameVault es una aplicación móvil para explorar y administrar juegos. Permite visualizar un catálogo de juegos por plataforma y género, ver detalles como precio, descripción y clasificación por edades, y agregar juegos a favoritos. La app está diseñada para brindar una experiencia limpia y rápida de navegación entre pantallas.
 
-## Step 1: Start Metro
+## Funcionalidades
+- Visualizar un catálogo de juegos.  
+- Ver detalles de cada juego (imagen, descripción, precio, clasificación por edades).  
+- Agregar o quitar juegos de favoritos.  
+- Navegación fluida entre pantallas con Stack Navigator.  
+- Interfaz amigable y responsive con colores diferenciados por género y plataforma.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Tecnologías utilizadas
+- React Native  
+- React Navigation (Stack & Tabs)  
+- React Native Vector Icons  
+- JavaScript (ES6+)  
+- React Native Safe Area Context  
+- React Native CLI  
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Instalación y ejecución
+### 1. Clonar el repositorio:
+- git clone https://github.com/manub-11/GameVault.git
 
-```sh
-# Using npm
-npm start
+### 2. Instalar dependencias:
+- cd GameVault
+- npm install
 
-# OR using Yarn
-yarn start
-```
+### 3. Ejecutar la app en Android:
+- npx react-native run-android
 
-## Step 2: Build and run your app
+### 4. Ejecutar la app en iOS (requiere Mac):
+- npx react-native run-ios
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-### Android
+## Uso
+- Abrir la aplicación y explorar el catálogo de juegos.  
+- Seleccionar un juego para ver sus detalles.  
+- Presionar “Agregar a favoritos” para marcar tus juegos preferidos.  
+- Usar el botón de “Volver” dentro de la pantalla de detalle para regresar al catálogo.  
 
-```sh
-# Using npm
-npm run android
+## Flujo de navegación
 
-# OR using Yarn
-yarn android
-```
+| Pantalla          | Descripción                                           |
+|------------------|-------------------------------------------------------|
+| GameListScreen    | Muestra el catálogo completo de juegos.              |
+| GameDetailScreen  | Detalles del juego seleccionado con botón de favoritos. |
+| AddGameScreen     | (Futura) Permite agregar juegos al catálogo.        |
+| GamingNewsScreen  | (Futura) Noticias sobre juegos.                     |
 
-### iOS
+## Colores por plataforma y género
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### Plataforma
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+| Plataforma | Color   |
+|------------|---------|
+| PS5        | #4B69FF |
+| PC         | #27AE60 |
+| Switch     | #E74C3C |
+| Xbox       | #107C10 |
 
-```sh
-bundle install
-```
+### Género
 
-Then, and every time you update your native dependencies, run:
+| Género     | Color   |
+|------------|---------|
+| Acción     | #FF6B6B |
+| Aventura   | #FFA500 |
+| Simulación | #3498DB |
+| Terror     | #8E44AD |
+| RPG        | #1ABC9C |
+| Deportes   | #F1C40F |
+| Estrategia | #E67E22 |
 
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
